@@ -42,4 +42,3 @@ const showVelibStation = (selector, name, numberClassicalVelibs, numberElectricV
 const selector = document.getElementById('selector')
 
 setInterval(fetchInfoVelib, 3000);
-setInterval(fetchInfoVelib, 3000);
