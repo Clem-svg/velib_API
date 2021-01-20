@@ -14,17 +14,17 @@ const fetchInfoVelib = () => {
 }
 
 const velibInfo = (data) => {
-  const dataArray = data.records
-      for (let i = 0; i < 5; i++) {
-        let name = dataArray[i].fields.name
-        let numberElectricVelibs = dataArray[i].fields.ebike
-        let numberClassicalVelibs = dataArray[i].fields.mechanical
-        let numberOfAvailableSpots = dataArray[i].fields.numdocksavailable
+  const dataArray = data.records;
+  const selector = document.getElementById('selector');
+  dataArray.forEach( (item) => {
+    const name = item.fields.name;
+    const numberElectricVelibs = item.fields.ebike;
+    const numberClassicalVelibs = item.fields.mechanical;
+    const numberOfAvailableSpots = item.fields.numdocksavailable;
 
-        showVelibStation(selector, name, numberClassicalVelibs, numberElectricVelibs, numberOfAvailableSpots)
-
-      }
-}
+    showVelibStation(selector, name, numberClassicalVelibs, numberElectricVelibs, numberOfAvailableSpots);
+  });
+};
 
 
 const showVelibStation = (selector, name, numberClassicalVelibs, numberElectricVelibs, numberOfAvailableSpots) => {
@@ -41,4 +41,5 @@ const showVelibStation = (selector, name, numberClassicalVelibs, numberElectricV
 
 const selector = document.getElementById('selector')
 
+fetchInfoVelib();
 setInterval(fetchInfoVelib, 3000);
